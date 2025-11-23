@@ -11,7 +11,15 @@ const require = createRequire(import.meta.url);
 const contractJson = require("./chain/build/contracts/DeDiTContract.json");
 
 const app = express();
-app.use(cors()); // Allow frontend to access backend
+
+app.use(
+  cors({
+    origin: "https://dedit.netlify.app", // allow only your frontend
+    methods: ["GET", "POST"],            // allowed request types
+    credentials: true,                   // allow cookies/headers if needed
+  })
+);
+
 app.use(express.json()); // Allow JSON request body
 
 const ABI = contractJson.abi;
