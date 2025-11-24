@@ -18,6 +18,9 @@ It ensures:
 
 This removes reliance on manual logs and guarantees transparency across the entire cold chain.
 
+[🔗 Working Demo Video](https://www.youtube.com/watch?v=A8E4V_GSjFA&t=12s)
+
+
 ---
 
 ## 🛠 Tech Stack
