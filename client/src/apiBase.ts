@@ -1,2 +1,3 @@
-const API_BASE = "https://dedit.netlify.app"
+const API_BASE = "https://dedit.onrender.com"
+//const API_BASE = "http://localhost:5000"
 export default API_BASE

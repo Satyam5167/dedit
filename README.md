@@ -1,26 +1,56 @@
-# 🧪 DeDiT – Decentralized Digital Twin for Vaccine Vials
+# 🧪 DeDiT – Decentralized Digital Twin for Vaccine Vials  
+Smart, autonomous vaccine monitoring that runs **fully on-chain**, powered by Spolia Testnet + React.
 
-A blockchain-powered real-time vaccine monitoring system that ensures safety, transparency, and tamper-proof tracking using digital twins.
-
----
-
-## 🚀 Overview
-
-Vaccines are extremely temperature-sensitive. If stored incorrectly, they spoil — risking health and causing large wastage.
-
-**DeDiT (Decentralized Digital Twin)** creates an **on-chain digital twin NFT** for every vaccine vial and continuously updates its real-time temperature.  
-It ensures:
-
-- Automated live monitoring  
-- Tamper-proof on-chain logs  
-- Real-time spoilage detection  
-- Live analytics and dashboard  
-
-This removes reliance on manual logs and guarantees transparency across the entire cold chain.
+Live demo, architecture diagram, deployed code, and complete setup instructions included below.
 
 ---
 
-## 🛠 Tech Stack
+# 🌐 **Working Demo**
+👉 **https://dedit.netlify.app**  
+
+---
+
+# 🚦 **Problem → Solution → Demo Steps**
+
+## ❌ Problem  
+Vaccines are extremely temperature-sensitive.  
+Traditional cold-chain systems depend on **manual logs**, delayed reporting, and no real-time alerts — resulting in spoilage, wastage, and safety risks.
+
+## ✅ Solution  
+**DeDiT** creates a **Digital Twin NFT** for every physical vaccine vial.
+
+Each twin automatically records:
+- Temperature  
+- Potency  
+- Spoilage state  
+- Timestamp  
+
+And stores it directly **on-chain**, tamper-proof and trustless.
+
+The system provides:
+- Live temperature monitoring  
+- Real-time spoilage alerts  
+- Automatic potency degradation logic  
+- Smooth visualization and graphs  
+
+## ▶️ Demo Steps  
+1. Connect (mock) wallet.  
+2. Load an existing vial OR mint a new one.  
+3. Watch temperature auto-update every 5 seconds.  
+4. Observe live graph refresh every 4 seconds.  
+5. If the vial overheats → contract marks it **SPOILED** and auto-updates stop.  
+
+---
+
+# 🏗️ **System Architecture**
+
+Below is the exact architecture used in DeDiT:
+
+![System Architecture](./systemDesign.PNG)
+
+---
+
+# 🛠️ Tech Stack
 
 ### **Frontend**
 - React + TypeScript  
@@ -36,83 +66,112 @@ This removes reliance on manual logs and guarantees transparency across the enti
 ### **Blockchain**
 - Solidity Smart Contract  
 - NFT Digital Twin  
-- Deployed on Sepolia / Arbitrum Stylus  
+- Deployed on Arbitrum Stylus (or Sepolia for demo)
 
 ---
 
-## 🔥 Features
+# 🔥 Features
 
-### 🧊 Real-Time Monitoring
-- Auto temperature updates every **5 seconds**
-- Graph auto-refresh every **4 seconds**
-- IST timestamp formatting  
+### 🧊 Real-Time Monitoring  
+- Auto temperature generation every **5 seconds**  
+- Auto-refresh graph every **4 seconds**  
 - Smooth UI animations  
 
-### 🧬 Digital Twin NFT
-Each vial NFT stores:
-- Temperature  
-- Potency  
-- Spoilage State  
-- Last updated timestamp  
+### 🧬 Digital Twin NFT  
+Each vial NFT tracks:  
+- `temperature`  
+- `potency`  
+- `spoiled`  
+- `lastUpdated`  
 
-### ⚠️ Spoilage Detection
-If a vial overheats:
-- Smart contract marks it **SPOILED**
-- Frontend disables auto-updates  
-- Red alert UI with glowing animation  
+### ⚠️ Spoilage Detection  
+If temperature goes out of range:  
+- Smart contract marks vial **SPOILED**  
+- Frontend stops sending temperature updates  
+- Glowing red UI alert activated  
 
 ---
 
-## 🖥 How to Run
+# 🖥️ **How to Run the Project**
 
-### 1️⃣ Clone Repo
-```bash
-git clone <your-repo>
+## 📁 Folder Structure
+```
+/client     → React + TypeScript frontend
+/server     → Node.js + Express backend
 ```
 
-### 2️⃣ Install Frontend
+---
+
+# ⚙️ **Backend Setup (/server)**
+
+### 1️⃣ Install dependencies
 ```bash
-cd frontend
+cd server
 npm install
+```
+
+### 2️⃣ Add `.env`
+```
+SEPOLIA_RPC_URL=<your_rpc_url>
+PRIVATE_KEY=<wallet_private_key>
+CONTRACT_ADDRESS=<deployed_contract_address>
+```
+
+### 3️⃣ Start backend
+```bash
+node server
+```
+
+Backend runs on:
+```
+http://localhost:5000
+```
+
+---
+
+# 🖥️ **Frontend Setup (/client)**
+
+### 1️⃣ Install dependencies
+```bash
+cd client
+npm install
+```
+
+### 2️⃣ Start frontend
+```bash
 npm run dev
 ```
 
-### 3️⃣ Install Backend
-```bash
-cd backend
-npm install
-npm start
+Frontend runs on:
 ```
-
-### 4️⃣ Add `.env`
-```
-SEPOLIA_RPC_URL=
-PRIVATE_KEY=
-CONTRACT_ADDRESS=
+http://localhost:5173
 ```
 
 ---
 
-## 📡 API Endpoints
+# 📡 **API Endpoints**
 
-### `GET /vial/:id`
-Returns vial state.
+### `GET /vial/:id`  
+Fetch vial state (temperature, potency, spoiled).
 
-### `POST /update`
-Updates temperature.
+### `POST /update`  
+Update temperature.
 
-### `POST /mint`
-Mints a new vial NFT.
-
----
-
-## 🔮 Future Enhancements
-- IoT hardware integration  
-- Push alerts  
-- GPS tracking  
-- Multi-vial admin dashboard  
+### `POST /mint`  
+Mint a new vial NFT.
 
 ---
 
-## 📄 License
-MIT License © 2025 DeDiT
+
+
+# 🔮 **Future Enhancements**
+- Hardware IoT + ESP32 integration  
+- SMS + Email alerts  
+- Multi-vial dashboard  
+- QR-based vial scanning  
+- GPS-based live cold-chain tracking  
+
+---
+
+# 📄 License
+MIT License © 2025 DeDiT  
